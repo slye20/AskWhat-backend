@@ -2,30 +2,31 @@
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 
-threads = [
-  {
-    title: "Welcome to Our Community Forum",
-    user_id: 1, # Assuming a user with ID 1 exists
-    category_id: 1 # Assuming a category with ID 1 exists
-  },
-  {
-    title: "Tips for Effective Online Learning",
-    user_id: 2,
-    category_id: 2 # Assuming a category with ID 2 exists
-  },
-  {
-    title: "Upcoming Webinar on Web Development",
-    user_id: 3,
-    category_id: 3 # Assuming a category with ID 3 exists
-  }
-]
+# Create Users
+users = User.create!([
+  { username: 'user1', password: 'password1', email: 'user1@example.com' },
+  { username: 'user2', password: 'password2', email: 'user2@example.com' },
+  { username: 'user3', password: 'password3', email: 'user3@example.com' }
+])
 
-threads.each do |thread|
-  ForumThread.create!(thread)
-end
+# Create Categories
+categories = Category.create!([
+  { name: 'General Discussion', description: 'Talk about anything and everything.' },
+  { name: 'Tech Talk', description: 'Discussions about technology and gadgets.' },
+  { name: 'Learning Resources', description: 'Share and discover learning materials.' }
+])
+
+# Create Forum Threads
+forum_threads = ForumThread.create!([
+  { title: 'Welcome to Our Community Forum', user_id: users[0].id, category_id: categories[0].id },
+  { title: 'Favorite Tech Gadgets of 2023', user_id: users[1].id, category_id: categories[1].id },
+  { title: 'Best Online Learning Platforms', user_id: users[2].id, category_id: categories[2].id }
+])
+
+# Create Posts
+posts = Post.create!([
+  { forum_thread_id: forum_threads[0].id, user_id: users[0].id, content: 'Thanks for joining our forum!' },
+  { forum_thread_id: forum_threads[1].id, user_id: users[1].id, content: 'I love the new tech this year.' },
+  { forum_thread_id: forum_threads[2].id, user_id: users[2].id, content: 'Online learning is more accessible than ever.' }
+])
