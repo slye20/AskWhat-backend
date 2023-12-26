@@ -30,3 +30,12 @@ posts = Post.create!([
   { forum_thread_id: forum_threads[1].id, user_id: users[1].id, content: 'I love the new tech this year.' },
   { forum_thread_id: forum_threads[2].id, user_id: users[2].id, content: 'Online learning is more accessible than ever.' }
 ])
+
+more_posts = Post.create!([
+  { forum_thread_id: forum_threads[0].id, user_id: users[1].id, content: 'Glad to be a part of this community!' },
+  { forum_thread_id: forum_threads[0].id, user_id: users[2].id, content: 'Hello everyone, excited to join in!' },
+  { forum_thread_id: forum_threads[1].id, user_id: users[0].id, content: 'Tech gadgets are evolving rapidly!' },
+  { forum_thread_id: forum_threads[1].id, user_id: users[2].id, content: 'Anyone tried the latest VR set?' },
+  { forum_thread_id: forum_threads[2].id, user_id: users[1].id, content: 'Online courses are a game-changer.' },
+  { forum_thread_id: forum_threads[2].id, user_id: users[0].id, content: 'I recommend checking out free webinars.' }
+])
