@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   resources :forum_threads
   resources :posts
+
+  post '/login',    to: 'auth#create'
+  get '/me',   to: 'users#show'
+  post '/signup', to: 'users#create'
+
+
+  resources :users, only: [:create, :show, :index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
