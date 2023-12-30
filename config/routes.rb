@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :forum_threads
   resources :posts
+  resources :categories
 
   post '/login',    to: 'auth#create'
   get '/me',   to: 'users#show'
