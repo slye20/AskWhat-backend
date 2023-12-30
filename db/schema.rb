@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_27_102304) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_30_172110) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,13 +21,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_27_102304) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "categories_forum_threads", id: false, force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "forum_thread_id", null: false
+    t.index ["category_id"], name: "index_categories_forum_threads_on_category_id"
+    t.index ["forum_thread_id"], name: "index_categories_forum_threads_on_forum_thread_id"
+  end
+
   create_table "forum_threads", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.bigint "category_id", null: false
-    t.index ["category_id"], name: "index_forum_threads_on_category_id"
     t.index ["user_id"], name: "index_forum_threads_on_user_id"
   end
 
@@ -49,7 +54,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_27_102304) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "forum_threads", "categories"
   add_foreign_key "forum_threads", "users"
   add_foreign_key "posts", "forum_threads"
   add_foreign_key "posts", "users"

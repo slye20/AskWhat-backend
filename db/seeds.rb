@@ -19,9 +19,9 @@ categories = Category.create!([
 
 # Create Forum Threads
 forum_threads = ForumThread.create!([
-  { title: 'Welcome to Our Community Forum', user_id: users[0].id, category_id: categories[0].id },
-  { title: 'Favorite Tech Gadgets of 2023', user_id: users[1].id, category_id: categories[1].id },
-  { title: 'Best Online Learning Platforms', user_id: users[2].id, category_id: categories[2].id }
+  { title: 'Welcome to Our Community Forum', user_id: users[0].id },
+  { title: 'Favorite Tech Gadgets of 2023', user_id: users[1].id},
+  { title: 'Best Online Learning Platforms', user_id: users[2].id}
 ])
 
 # Create Posts
@@ -39,3 +39,7 @@ more_posts = Post.create!([
   { forum_thread_id: forum_threads[2].id, user_id: users[1].id, content: 'Online courses are a game-changer.' },
   { forum_thread_id: forum_threads[2].id, user_id: users[0].id, content: 'I recommend checking out free webinars.' }
 ])
+
+ForumThread.first.category << Category.first
+ForumThread.second.category << Category.second
+ForumThread.third.category << Category.third

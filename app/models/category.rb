@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-    has_many :forum_threads
+  has_and_belongs_to_many :forum_threads
 end
