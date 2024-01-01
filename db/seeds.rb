@@ -19,19 +19,12 @@ categories = Category.create!([
 
 # Create Forum Threads
 forum_threads = ForumThread.create!([
-  { title: 'Welcome to Our Community Forum', user_id: users[0].id },
-  { title: 'Favorite Tech Gadgets of 2023', user_id: users[1].id},
-  { title: 'Best Online Learning Platforms', user_id: users[2].id}
+  { title: 'Welcome to Our Community Forum', user_id: users[0].id , content: 'Thanks for joining our forum!' },
+  { title: 'Favorite Tech Gadgets of 2023', user_id: users[1].id, content: 'I love the new tech this year.' },
+  { title: 'Best Online Learning Platforms', user_id: users[2].id, content: 'Online learning is more accessible than ever.'}
 ])
 
-# Create Posts
-posts = Post.create!([
-  { forum_thread_id: forum_threads[0].id, user_id: users[0].id, content: 'Thanks for joining our forum!' },
-  { forum_thread_id: forum_threads[1].id, user_id: users[1].id, content: 'I love the new tech this year.' },
-  { forum_thread_id: forum_threads[2].id, user_id: users[2].id, content: 'Online learning is more accessible than ever.' }
-])
-
-more_posts = Post.create!([
+more_posts = Comment.create!([
   { forum_thread_id: forum_threads[0].id, user_id: users[1].id, content: 'Glad to be a part of this community!' },
   { forum_thread_id: forum_threads[0].id, user_id: users[2].id, content: 'Hello everyone, excited to join in!' },
   { forum_thread_id: forum_threads[1].id, user_id: users[0].id, content: 'Tech gadgets are evolving rapidly!' },

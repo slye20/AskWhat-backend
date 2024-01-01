@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :forum_threads
-  resources :posts
+  resources :comments
   resources :categories
 
   post '/login',    to: 'auth#create'
