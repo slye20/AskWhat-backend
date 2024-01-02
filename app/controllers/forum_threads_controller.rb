@@ -13,8 +13,8 @@ class ForumThreadsController < ApplicationController
   
   # need pagination
   def index
-    @thread = ForumThread.all.order(created_at: :asc)
-    render json: @thread, each_serializer: ForumThreadsSerializer
+    threads = ForumThread.all.order(created_at: :asc)
+    render json: threads, each_serializer: ForumThreadsSerializer
   end
 
   def show
@@ -24,7 +24,6 @@ class ForumThreadsController < ApplicationController
 
   def create
     @thread = ForumThread.new(title: thread_params[:title], user_id: current_user.id, content: thread_params[:content])
-    
     update_categories
     if @thread.valid?
       @thread.save
