@@ -46,6 +46,9 @@ class ForumThreadsController < ApplicationController
 
   def destroy
     @thread = ForumThread.find(params[:id])
+    @thread.comments.map do |comment|
+      comment.delete
+    end
     if @thread.delete
       render status: :ok
     else
