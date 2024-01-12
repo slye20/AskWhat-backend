@@ -46,10 +46,7 @@ class ForumThreadsController < ApplicationController
 
   def destroy
     @thread = ForumThread.find(params[:id])
-    @thread.comments.map do |comment|
-      comment.delete
-    end
-    if @thread.delete
+    if @thread.destroy
       render status: :ok
     else
       render json: { error: @thread.errors.full_messages }, status: :not_acceptable
