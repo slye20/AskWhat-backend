@@ -18,4 +18,9 @@ class IndividualForumSerializer < ActiveModel::Serializer
       category.name
     end
   end
+
+  def comments 
+    object.comments.order(:created_at)
+  end
+
 end
