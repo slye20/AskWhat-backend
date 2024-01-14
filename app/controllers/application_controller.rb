@@ -1,14 +1,20 @@
+# ApplicationController is the base controller for the application,
+# providing common functionality related to user authentication and
+# authorization using JWT (JSON Web Tokens).
 class ApplicationController < ActionController::API
   before_action :authorized
 
+  # Retrieve the JWT secret key from application credentials.
   def jwt_key
     Rails.application.credentials.jwt_key
   end
 
-  def encode_token(payload) # user_id as payload
+  # Encode a payload (user_id) into a JWT token.
+  def encode_token(payload)
     JWT.encode(payload, jwt_key, 'HS256')
   end
 
+  # Decode a JWT token from the request header.
   def decode_token
     header = request.headers['Authorization']
     return unless header
@@ -20,6 +26,7 @@ class ApplicationController < ActionController::API
     end
   end
 
+  # Returns the current user if authenticated, or nil if not.
   def current_user
     return unless decode_token
 
@@ -27,6 +34,7 @@ class ApplicationController < ActionController::API
     @user = User.find_by(id: user_id)
   end
 
+  # Check if the current user is authorized.
   def authorized
     return if !!current_user
 
