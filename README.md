@@ -1,25 +1,85 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 # AskWhat-backend
+
+Backend of AskWhat, an online forum for CVWO assignment.
+Built with Ruby on Rails.
+
+Creator: Samuel Lim Yong En
+
+## Download Instructions
+
+Install Git and ruby 3.2.2 if you haven't already (ruby 3.2.2 was used for the development of the application).
+
+Clone the repository:
+
+```
+git clone https://github.com/slye20/AskWhat-backend
+```
+
+Install all dependencies:
+
+```
+bundle install
+```
+
+Create db and migrate schema:
+
+```
+rake db:create
+rake db:migrate
+```
+
+Run application
+
+```
+rails s
+```
+
+And now you can visit the site with the URL http://localhost:3000
+
+## What's included
+
+```
+├── channels
+│   └── application_cable
+│       ├── channel.rb
+│       └── connection.rb
+│
+├── controllers
+│   ├── application_controller.rb
+│   ├── auth_controller.rb
+│   ├── categories_controller.rb
+│   ├── comments_controller.rb
+│   ├── forum_threads_controller.rb
+│   ├── search_controller.rb
+│   └── users_controller.rb
+│
+├── jobs
+│   └── application_job.rb
+│
+├── mailers
+│   └── application_mailer.rb
+│
+├── models
+│   ├── application_record.rb
+│   ├── category.rb
+│   ├── comment.rb
+│   ├── concerns
+│   ├── forum_thread.rb
+│   └── user.rb
+│
+├── serializers
+│   ├── categories_serializer.rb
+│   ├── category_serializer.rb
+│   ├── comments_serializer.rb
+│   ├── forum_threads_serializer.rb
+│   └── individual_forum_serializer.rb
+│
+└── views
+    └── layouts
+        ├── mailer.html.erb
+        └── mailer.text.erb
+```
+
+## More information
+
+Database: PostgreSQL for managing relational data.
