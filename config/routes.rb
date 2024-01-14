@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/login',    to: 'auth#create'
   get '/me',   to: 'users#show'
   post '/signup', to: 'users#create'
+  get '/search', to: 'search#show'
 
 
   resources :users, only: [:create, :show, :index]
