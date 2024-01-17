@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_01_113453) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_17_034135) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,26 +24,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_01_113453) do
   create_table "categories_forum_threads", id: false, force: :cascade do |t|
     t.bigint "category_id", null: false
     t.bigint "forum_thread_id", null: false
-    t.index ["category_id"], name: "index_categories_forum_threads_on_category_id"
-    t.index ["forum_thread_id"], name: "index_categories_forum_threads_on_forum_thread_id"
+    t.index ["category_id", "forum_thread_id"], name: "idx_on_category_id_forum_thread_id_03185b6b1f"
+    t.index ["forum_thread_id", "category_id"], name: "idx_on_forum_thread_id_category_id_43f3ca22d7"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "forum_thread_id", null: false
     t.text "content"
+    t.bigint "forum_thread_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
     t.index ["forum_thread_id"], name: "index_comments_on_forum_thread_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "forum_threads", force: :cascade do |t|
     t.string "title"
+    t.text "content"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
-    t.text "content"
     t.index ["user_id"], name: "index_forum_threads_on_user_id"
   end
 
