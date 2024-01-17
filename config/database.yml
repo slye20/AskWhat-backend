@@ -82,3 +82,4 @@ production:
   database: ask_what_backend_production
   username: ask_what_backend
   password: <%= ENV["ASK_WHAT_BACKEND_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
