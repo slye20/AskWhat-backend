@@ -4,7 +4,7 @@
 # - index: List all comments
 # - create: Create a new comment on a forum thread
 # - update: Update an existing comment
-# - destroy: Delete a comment
+# - destroy: Delete a existing comment
 class CommentsController < ApplicationController
   skip_before_action :authorized, only: [:index]
   def index
