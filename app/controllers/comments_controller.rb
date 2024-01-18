@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
                            user_id: current_user.id)
     if @comment.valid?
       @comment.save
-      render json: { thread: @comment }, status: :created
+      render json: { comment: @comment }, status: :created
     else
       render json: { error: @comment.errors.full_messages }, status: :not_acceptable
     end
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(content: comment_params[:content])
-      render json: { thread: @comment }, status: :ok
+      render json: { comment: @comment }, status: :ok
     else
       render json: { error: @comment.errors.full_messages }, status: :not_acceptable
     end
