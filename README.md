@@ -30,6 +30,7 @@ Create db and migrate schema:
 ```
 rake db:create
 rake db:migrate
+rake db:seed
 ```
 
 Run application
