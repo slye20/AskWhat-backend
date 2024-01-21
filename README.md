@@ -44,6 +44,7 @@ And now you can visit the site with the URL http://localhost:3000
 ## What's included
 
 ```
+app
 ├── channels
 │   └── application_cable
 │       ├── channel.rb
